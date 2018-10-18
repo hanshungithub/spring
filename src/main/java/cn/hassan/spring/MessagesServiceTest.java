@@ -12,9 +12,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class MessagesServiceTest {
 
 	public static void main(String[] args) {
+
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
 		System.out.println("context is running");
 		MessageService messageService = applicationContext.getBean(MessageService.class);
 		System.out.println(messageService.getMessages());
+
 	}
 }
