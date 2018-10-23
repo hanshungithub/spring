@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd" default-autowire="byName">
+
+    <bean id="userService" class="cn.hassan.spring.impl.UserServiceImpl"/>
+    <bean id="orderService" class="cn.hassan.spring.impl.OrderServiceImpl"/>
+
+    <bean id="logArgsAdvice" class="cn.hassan.spring.aop.LogArgsAdvice"/>
+    <bean id="logResultAdvice" class="cn.hassan.spring.aop.LogResultAdvice"/>
+
+    <bean id="userServiceProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <!--需要代理类的接口-->
+        <property name="proxyInterfaces">
+            <list>
+                <value>cn.hassan.spring.UserService</value>
+            </list>
+        </property>
+        <!--代理类的实现-->
+        <property name="target" ref="userService"/>
+        <!--配置拦截器-->
+        <property name="interceptorNames">
+            <list>
+                <value>logArgsAdvice</value>
+                <value>logResultAdvice</value>
+            </list>
+        </property>
+    </bean>
+</beans>
