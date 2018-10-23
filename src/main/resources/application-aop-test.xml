@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd" default-autowire="byName">
+
+    <bean id="userService" class="cn.hassan.spring.impl.UserServiceImpl"/>
+    <bean id="orderService" class="cn.hassan.spring.impl.OrderServiceImpl"/>
+
+    <bean id="logArgsAdvice" class="cn.hassan.spring.aop.LogArgsAdvice"/>
+    <bean id="logResultAdvice" class="cn.hassan.spring.aop.LogResultAdvice"/>
+
+    <!--定义两个advisor-->
+    <!--1,记录create方法传的参数-->
+    <bean id="logArgsAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+        <property name="advice" ref="logArgsAdvice"/>
+        <property name="pattern" value="cn.hassan.spring.impl.*.create.*"/>
+    </bean>
+    <!--2,记录query的返回值-->
+    <bean id="logResultAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+        <property name="advice" ref="logResultAdvice"/>
+        <property name="pattern" value="cn.hassan.spring.impl.*.query.*"/>
+    </bean>
+    <!--定义defaultAdvisorAutoProxyCreator-->
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"/>
+</beans>

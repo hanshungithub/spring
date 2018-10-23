@@ -24,6 +24,10 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User queryUser() {
+		User user = new User();
+		user.setFirstname("test");
+		user.setLastname("test");
+		user.setAge(20);
 		return user;
 	}
 }

@@ -12,10 +12,16 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class AOPTest {
 
 	public static void main(String[] args) {
-		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:application-aop.xml");
-		System.out.println("context is running");
-		UserService userService = (UserService) applicationContext.getBean("userServiceProxy");
-		userService.createUser("han", "hassan", 25);
+		// 启动 Spring 的 IOC 容器
+		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:application-aop-test.xml");
+
+		UserService userService = context.getBean(UserService.class);
+		OrderService orderService = context.getBean(OrderService.class);
+
+		userService.createUser("Tom", "Cruise", 55);
 		userService.queryUser();
+
+		orderService.createOrder("Leo", "随便买点什么");
+		orderService.queryOrder("Leo");
 	}
 }

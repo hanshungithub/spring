@@ -23,6 +23,9 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public Order queryOrder(String username) {
+		Order order = new Order();
+		order.setUsername("test");
+		order.setProduct("test");
 		return order;
 	}
 }
