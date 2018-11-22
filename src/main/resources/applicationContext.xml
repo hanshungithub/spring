@@ -5,7 +5,7 @@
 
     <!--在是设置抽象bean的时候，需要加上getter方法-->
     <bean id="baseBean" abstract="true">
-        <property name="baseBean" value="hassan"/>
+        <property name="baseBean" value="single"/>
     </bean>
 
     <bean id="messageService" class="cn.hassan.spring.impl.MessagesServiceImpl" parent="baseBean"/>
