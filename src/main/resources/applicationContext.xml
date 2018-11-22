@@ -8,5 +8,9 @@
         <property name="baseBean" value="single"/>
     </bean>
 
+    <bean id="baseBeanClass" class="cn.hassan.spring.impl.BaseBean" abstract="true">
+        <property name="beanName" value="baseBeanClass"/>
+    </bean>
+
     <bean id="messageService" class="cn.hassan.spring.impl.MessagesServiceImpl" parent="baseBean"/>
 </beans>
