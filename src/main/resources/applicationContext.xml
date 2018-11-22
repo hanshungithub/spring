@@ -3,5 +3,10 @@
        xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd" default-autowire="byName">
 
-    <bean id="messageService" class="cn.hassan.spring.impl.MessagesServiceImpl"/>
+    <!--在是设置抽象bean的时候，需要加上getter方法-->
+    <bean id="baseBean" abstract="true">
+        <property name="baseBean" value="hassan"/>
+    </bean>
+
+    <bean id="messageService" class="cn.hassan.spring.impl.MessagesServiceImpl" parent="baseBean"/>
 </beans>

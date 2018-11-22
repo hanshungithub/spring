@@ -10,7 +10,17 @@ import cn.hassan.spring.MessageService;
  */
 public class MessagesServiceImpl implements MessageService {
 
+	private String baseBean;
+
 	public String getMessages() {
-		return "hello,spring";
+		return "hello,spring" + this.getBaseBean();
+	}
+
+	public String getBaseBean() {
+		return baseBean;
+	}
+
+	public void setBaseBean(String baseBean) {
+		this.baseBean = baseBean;
 	}
 }
