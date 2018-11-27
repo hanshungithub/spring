@@ -12,6 +12,7 @@
         <typeAliase type="com.cy.mybatis.beans.UserBean" alias="UserBean"/> -->
         <!-- 别名方式2，自动扫描，将JAVA类的类名作为类的类别名 -->
         <package name="cn.hassan.mybatis.pojo"/>
+        <package name="cn.hassan.mybatis.vo"/>
     </typeAliases>
     <!-- 配置mybatis运行环境 -->
     <environments default="development">
@@ -35,8 +36,16 @@
 
     <mappers>
         <!-- 告知映射文件方式1，一个一个的配置
-        <mapper resource="com/cy/mybatis/mapper/UserMapper.xml"/>-->
+        <mapper resource="com/cy/mybatis/mapper/UserMapper.xml"/>
+            Mapper动态代理方式
+            Mapper接口开发方法只需要程序员编写Mapper接口（相当于Dao接口），由Mybatis框架根据接口定义创建接口的动态代理对象，代理对象的方法体同上边Dao接口实现类方法。
+            Mapper接口开发需要遵循以下规范：
+            1、Mapper.xml文件中的namespace与mapper接口的类路径相同。
+            2、Mapper接口方法名和Mapper.xml中定义的每个statement的id相同
+            3、Mapper接口方法的输入参数类型和mapper.xml中定义的每个sql 的parameterType的类型相同
+            4、Mapper接口方法的输出参数类型和mapper.xml中定义的每个sql的resultType的类型相同
+        -->
         <!-- 告知映射文件方式2，自动扫描包内的Mapper接口与配置文件 -->
-        <mapper resource="mybatis/mapper/User.xml"/>
+        <mapper resource="mybatis/mapper/UserMapper.xml"/>
     </mappers>
 </configuration>

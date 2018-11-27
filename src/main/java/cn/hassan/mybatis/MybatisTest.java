@@ -35,7 +35,7 @@ public class MybatisTest {
 	@Test
 	public void findUserById() {
 		SqlSession session = sqlSessionFactory.openSession();
-		Object user = session.selectOne("findUserById", 1);
+		Object user = session.selectOne("findUserById", 2);
 		System.out.println(user);
 		session.close();
 	}
